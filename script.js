@@ -176,29 +176,32 @@ const duas = [
   
   // Share the Dua text for the specified card using the Web Share API (if supported)
   // The shared text includes all details plus a website link.
-  function shareDua(index) {
-    const dua = duas[index];
-    // Remove the website link if you don't have one
-    const shareText = 
-      "Title: " + dua.title + "\n\n" +
-      "Arabic: " + dua.arabic + "\n\n" +
-      "English: " + dua.translation_en + "\n\n" +
-      "Urdu-Hindi: " + dua.translation_hi_urdu + "\n\n" +
-      "Transliteration (English): " + dua.transliteration_en + "\n\n" +
-      "Transliteration (Hindi): " + dua.transliteration_hi + "\n\n" +
-      "Reference: " + dua.reference;
-      
-    if (navigator.share) {
-      navigator.share({
-        title: dua.title,
-        text: shareText
-      })
-      .then(() => console.log("Shared successfully!"))
-      .catch((error) => console.log("Error sharing", error));
-    } else {
-      alert("Sharing is not supported on this browser.");
-    }
+function shareDua(index) {
+  const dua = duas[index];
+  // Use your actual website URL
+  const websiteLink = "https://sakibjamadar01.github.io/Forgevness_Dua-s/";
+  const shareText = 
+    "Title: " + dua.title + "\n\n" +
+    "Arabic: " + dua.arabic + "\n\n" +
+    "English: " + dua.translation_en + "\n\n" +
+    "Urdu-Hindi: " + dua.translation_hi_urdu + "\n\n" +
+    "Transliteration (English): " + dua.transliteration_en + "\n\n" +
+    "Transliteration (Hindi): " + dua.transliteration_hi + "\n\n" +
+    "Reference: " + dua.reference + "\n\n" +
+    "Visit: " + websiteLink;
+    
+  if (navigator.share) {
+    navigator.share({
+      title: dua.title,
+      text: shareText
+    })
+    .then(() => console.log("Shared successfully!"))
+    .catch((error) => console.log("Error sharing", error));
+  } else {
+    alert("Sharing is not supported on this browser.");
   }
+}
+
   
   
   // Filter Duas based on the search input text
